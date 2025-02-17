@@ -8,5 +8,5 @@ then right click on html file and click
 
 
 It is just a demo app to predict forecast for 
-#### 5 days
+#### 7 days
 and display current weather conditions.
