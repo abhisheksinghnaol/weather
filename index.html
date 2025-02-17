@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200 font-sans">
+    <div class="container mx-auto p-5">
+        <header class="text-center mb-5">
+            <h1 class="text-3xl font-bold text-gray-800">Weather Forecast</h1>
+        </header>
+        
+        <div class="search-bar mb-5 flex justify-center">
+            <input id="city-input" type="text" placeholder="Enter City" class="border p-2 rounded mr-2">
+            <button id="search-button" class="bg-blue-500 text-white p-2 rounded">Search</button>
+        </div>
+
+        <!-- Current weather data display -->
+        <div id="weather-display" class="text-center">
+            <!-- Weather data will be displayed here -->
+        </div>
+        
+    </div>
+
+    <script src="weather.js"></script>
+</body>
+</html>
