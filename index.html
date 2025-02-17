@@ -22,6 +22,28 @@
             <!-- Weather data will be displayed here -->
         </div>
         
+
+        <!-- Dropdown for recent cities -->
+        <div id="recent-cities-dropdown" class="mt-5 text-center">
+            <select id="recent-cities" class="border p-2 rounded">
+                <option>Select a recent city</option>
+                <!-- Recent cities will populate here -->
+            </select>
+        </div>
+    </div>
+
+
+    <!-- Handling Error Calls made -->
+    <div id="error-modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+            <h2 class="text-xl font-semibold text-center text-red-500">Error</h2>
+            <p class="text-center text-gray-700">Please enter a valid place name.</p>
+            <div class="mt-4 text-center">
+                <button id="close-modal" class="bg-red-500 text-white p-2 rounded">
+                    Close
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="weather.js"></script>

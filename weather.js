@@ -21,8 +21,9 @@ async function fetchWeather(city) {
         if (!response.ok) throw new Error('City not found');
         const data = await response.json();
         displayWeather(data);
+        updateRecentCities(city);
     } catch (error) {
-        alert("Error: " + error.message);
+        showErrorModal();
     }
 }
 
@@ -42,3 +43,59 @@ function displayWeather(data) {
         <p>Lat&Long: ${data.location.lat},${data.location.lon}</p>
     `;
 }
+
+
+
+
+function updateRecentCities(city) {
+    let recentCities = JSON.parse(localStorage.getItem('recentCities')) || [];
+    if (!recentCities.includes(city)) {
+        recentCities.push(city);
+        localStorage.setItem('recentCities', JSON.stringify(recentCities));
+    }
+
+    populateRecentCitiesDropdown(recentCities);
+}
+
+
+function populateRecentCitiesDropdown(recentCities) {
+    const dropdown = document.getElementById('recent-cities');
+    dropdown.innerHTML = '<option>Select a recent city</option>';
+    recentCities.forEach(city => {
+        const option = document.createElement('option');
+        option.textContent = city;
+        dropdown.appendChild(option);
+    });
+}
+
+
+// Load recent cities on page load
+window.onload = function() {
+    const recentCities = JSON.parse(localStorage.getItem('recentCities')) || [];
+    populateRecentCitiesDropdown(recentCities);
+};
+
+
+
+
+const searchButton = document.getElementById('search-button');
+const cityInput = document.getElementById('city-input');
+
+// Adding a functionality to reset values entered in search input option
+searchButton.addEventListener('click', function () {
+    const cityName = cityInput.value;
+    cityInput.value = '';
+});
+
+
+
+function showErrorModal() {
+    const modal = document.getElementById('error-modal');
+    modal.classList.remove('hidden');  
+}
+
+// Close modal when user clicks close button
+document.getElementById('close-modal').addEventListener('click', function() {
+    const modal = document.getElementById('error-modal');
+    modal.classList.add('hidden');  
+});
